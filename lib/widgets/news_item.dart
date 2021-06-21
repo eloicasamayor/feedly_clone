@@ -21,7 +21,19 @@ class NewsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Duration hoursSincePublication = DateTime.now();
+    Duration TimeSincePublication = DateTime.now().difference(date);
+    int DaysSincePublication = TimeSincePublication.inDays;
+    String NewsPieceAge = '$DaysSincePublication d';
+    if (DaysSincePublication == 0) {
+      int HoursSincePublication = TimeSincePublication.inHours;
+      NewsPieceAge = '$HoursSincePublication h';
+
+      if (HoursSincePublication == 0) {
+        int MinutesSincePublication = TimeSincePublication.inMinutes;
+        NewsPieceAge = '$MinutesSincePublication min';
+      }
+    }
+
     return Dismissible(
       key: Key('key'),
       secondaryBackground: Container(
@@ -93,7 +105,7 @@ class NewsItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    '$how_popular  $source / $date',
+                    '$how_popular  $source / $NewsPieceAge',
                     style: TextStyle(color: Colors.black54),
                   ),
                 ],

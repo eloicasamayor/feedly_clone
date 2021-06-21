@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Feedly Clone',
       theme: ThemeData(
         primarySwatch: MaterialColor(0xFF2bb24c, colorPrincipal),
@@ -57,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _pullRefresh() async {}
-  final newsList = NewsData().newsList;
+  final List<Map<String, Object>> _newsList = NewsData().newsList;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -140,25 +141,49 @@ class _MyHomePageState extends State<MyHomePage> {
           RefreshIndicator(
             child: ListView(
               children: [
-                NewsItem(
-                  newsList[0]['title'].toString(),
-                  newsList[0]['source'].toString(),
-                  newsList[0]['image_url'].toString(),
-                  newsList[0]['article_url'].toString(),
-                  DateTime.fromMillisecondsSinceEpoch(
-                      (newsList[0]['date'] as int) * 1000),
-                  newsList[0]['news_text'].toString(),
-                  newsList[0]['how_popular'] as int,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 10,
+                  ),
+                  child: Text(
+                    'Most popular',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 100, 220),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15,
+                    ),
+                  ),
                 ),
                 NewsItem(
-                  newsList[1]['title'].toString(),
-                  newsList[1]['source'].toString(),
-                  newsList[1]['image_url'].toString(),
-                  newsList[1]['article_url'].toString(),
+                  _newsList[0]['title'].toString(),
+                  _newsList[0]['source'].toString(),
+                  _newsList[0]['image_url'].toString(),
+                  _newsList[0]['article_url'].toString(),
                   DateTime.fromMillisecondsSinceEpoch(
-                      (newsList[1]['date'] as int) * 1000),
-                  newsList[1]['news_text'].toString(),
-                  newsList[1]['how_popular'] as int,
+                      (_newsList[0]['date'] as int) * 1000),
+                  _newsList[0]['news_text'].toString(),
+                  _newsList[0]['how_popular'] as int,
+                ),
+                NewsItem(
+                  _newsList[1]['title'].toString(),
+                  _newsList[1]['source'].toString(),
+                  _newsList[1]['image_url'].toString(),
+                  _newsList[1]['article_url'].toString(),
+                  DateTime.fromMillisecondsSinceEpoch(
+                      (_newsList[1]['date'] as int) * 1000),
+                  _newsList[1]['news_text'].toString(),
+                  _newsList[1]['how_popular'] as int,
+                ),
+                NewsItem(
+                  _newsList[2]['title'].toString(),
+                  _newsList[2]['source'].toString(),
+                  _newsList[2]['image_url'].toString(),
+                  _newsList[2]['article_url'].toString(),
+                  DateTime.fromMillisecondsSinceEpoch(
+                      (_newsList[2]['date'] as int) * 1000),
+                  _newsList[2]['news_text'].toString(),
+                  _newsList[2]['how_popular'] as int,
                 ),
               ],
             ),

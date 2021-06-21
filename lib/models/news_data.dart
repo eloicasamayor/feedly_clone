@@ -25,5 +25,18 @@ class NewsData {
           'TheThe Motorola Moto G Stylus 5G, as you may have pieced together, is a phone with a built-in stylus and 5G. It’s a slightly upgraded version of the 4G-only, 2021-edition Moto G Stylus (I’m sorry, that’s really how these phones are named). The Stylus 5G includes a few more hardware upgrades in addition to 5G connectivity, including a bigger battery, more storage and RAM (256GB and 6GB on the version I tested, respectively), and a newer Snapdragon 480 processor. There’s a new stylus-friendly GIF creator mode, which is fun. Fun is good! But it more or less feels like the same phone: the rear camera array is identical with the exception of a different macro sensor, its 6.8-inch screen is the same, and overall dimensions are similar.',
       'how_popular': 25,
     },
+    {
+      'title':
+          'Super Mario World receives the widescreen emulation mod it deserves',
+      'source': 'The Verge - All Posts',
+      'article_url':
+          'https://www.theverge.com/tldr/2021/6/21/22543305/super-mario-world-widescreen-rom-hack-bsnes-hd',
+      'image_url':
+          'https://cdn.vox-cdn.com/thumbor/gogV2vvznhUe-uG7dPG5zSbK5ko=/0x0:2560x1440/920x613/filters:focal(1076x516:1484x924):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/69480489/msedge_ZDHAPTUK8C.0.jpg',
+      'date': 1624296971,
+      'news_text':
+          'Some purists might sneer at the idea of playing retro games in anything other than their original 4:3 aspect ratio. But for anyone else, a new widescreen hack for Super Mario World means you can now enjoy the 1990 game on modern displays, without having to put up with black bars or a weirdly stretched image. Super Mario World Widescreen is the work of ROM hacker Vitor Vilela, and works by modifying the original game’s ROM when played through the bsnes_hd emulator. It means the game’s original 256x224 internal screen size can be adjusted to 352×224 to give it the correct aspect ratio for a 16:9 display. As well as 16:9, the patch also supports 16:10 resolutions, and ultrawide 21:9 support is planned for the future.',
+      'how_popular': 300,
+    },
   ];
 }
