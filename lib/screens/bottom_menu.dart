@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/modal_feed_style.dart';
 import './search_screen.dart';
 import './add_content_screen.dart';
 import './main_feed_screen.dart';
@@ -92,7 +93,18 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             if (_selectedPageIndex == 2 || _selectedPageIndex == 1)
               IconButton(
-                onPressed: () {},
+                onPressed: () => showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                    ),
+                    backgroundColor: Colors.white,
+                    builder: (context) {
+                      return ModalFeedStyle();
+                    }),
                 icon: Icon(Icons.more_horiz),
                 color: Colors.black38,
               ),
