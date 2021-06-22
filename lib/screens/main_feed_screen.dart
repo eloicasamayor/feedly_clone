@@ -29,6 +29,7 @@ class MainFeedScreen extends StatelessWidget {
               ),
             ),
             NewsItem(
+              0,
               _newsList[0]['title'].toString(),
               _newsList[0]['source'].toString(),
               _newsList[0]['image_url'].toString(),
@@ -39,6 +40,7 @@ class MainFeedScreen extends StatelessWidget {
               _newsList[0]['how_popular'] as int,
             ),
             NewsItem(
+              1,
               _newsList[1]['title'].toString(),
               _newsList[1]['source'].toString(),
               _newsList[1]['image_url'].toString(),
@@ -49,6 +51,7 @@ class MainFeedScreen extends StatelessWidget {
               _newsList[1]['how_popular'] as int,
             ),
             NewsItem(
+              2,
               _newsList[2]['title'].toString(),
               _newsList[2]['source'].toString(),
               _newsList[2]['image_url'].toString(),

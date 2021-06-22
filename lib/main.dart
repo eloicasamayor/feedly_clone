@@ -1,4 +1,3 @@
-import 'package:feedly_clone/screens/article_scren.dart';
 import 'package:flutter/material.dart';
 import 'screens/bottom_menu.dart';
 
@@ -38,7 +37,6 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: MyHomePage(title: 'Today'),
-      routes: {ArticleScreen.routeName: (ctx) => ArticleScreen()},
     );
   }
 }

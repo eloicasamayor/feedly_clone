@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../screens/article_scren.dart';
 
 class NewsItem extends StatelessWidget {
+  int id;
   String imageUrl;
   String source;
   String articleUrl;
@@ -11,6 +12,7 @@ class NewsItem extends StatelessWidget {
   int howPopular;
 
   NewsItem(
+    this.id,
     this.title,
     this.source,
     this.imageUrl,
@@ -38,7 +40,13 @@ class NewsItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         print('hola');
-        Navigator.of(context).pushNamed(ArticleScreen.routeName);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) {
+              return ArticleScreen(id);
+            },
+          ),
+        );
       },
       child: Dismissible(
         key: Key('key'),
