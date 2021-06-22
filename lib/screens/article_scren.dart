@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../models/news_data.dart';
 
 class ArticleScreen extends StatelessWidget {
@@ -6,12 +8,26 @@ class ArticleScreen extends StatelessWidget {
   ArticleScreen(this.id);
   static const String routeName = '/article-screen';
 
+  Future<void> _launchInBrowser(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+        headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     String _title = NewsData().newsList[id]['title'].toString();
     String _source = NewsData().newsList[id]['source'].toString();
     String _articleBody = NewsData().newsList[id]['news_text'].toString();
     String _imageUrl = NewsData().newsList[id]['image_url'].toString();
+    String _articleUrl = NewsData().newsList[id]['article_url'].toString();
 
     return Scaffold(
       appBar: AppBar(
@@ -59,12 +75,15 @@ class ArticleScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(
-              _title,
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                height: 1.1,
+            InkWell(
+              onTap: () => _launchInBrowser(_articleUrl),
+              child: Text(
+                _title,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  height: 1.1,
+                ),
               ),
             ),
             SizedBox(height: 10),
@@ -116,7 +135,7 @@ class ArticleScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () => _launchInBrowser(_articleUrl),
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black26),
