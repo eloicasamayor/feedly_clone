@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 
 class NewsItem extends StatelessWidget {
-  String image_url;
+  String imageUrl;
   String source;
-  String article_url;
+  String articleUrl;
   String title;
   DateTime date;
-  String news_text;
-  int how_popular;
+  String newsText;
+  int howPopular;
 
   NewsItem(
     this.title,
     this.source,
-    this.image_url,
-    this.article_url,
+    this.imageUrl,
+    this.articleUrl,
     this.date,
-    this.news_text,
-    this.how_popular,
+    this.newsText,
+    this.howPopular,
   );
 
   @override
   Widget build(BuildContext context) {
-    Duration TimeSincePublication = DateTime.now().difference(date);
-    int DaysSincePublication = TimeSincePublication.inDays;
-    String NewsPieceAge = '$DaysSincePublication d';
-    if (DaysSincePublication == 0) {
-      int HoursSincePublication = TimeSincePublication.inHours;
-      NewsPieceAge = '$HoursSincePublication h';
+    Duration timeSincePublication = DateTime.now().difference(date);
+    int daysSincePublication = timeSincePublication.inDays;
+    String newsPieceAge = '$daysSincePublication d';
+    if (daysSincePublication == 0) {
+      int hoursSincePublication = timeSincePublication.inHours;
+      newsPieceAge = '$hoursSincePublication h';
 
-      if (HoursSincePublication == 0) {
-        int MinutesSincePublication = TimeSincePublication.inMinutes;
-        NewsPieceAge = '$MinutesSincePublication min';
+      if (hoursSincePublication == 0) {
+        int minutesSincePublication = timeSincePublication.inMinutes;
+        newsPieceAge = '$minutesSincePublication min';
       }
     }
 
@@ -105,7 +105,7 @@ class NewsItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    '$how_popular  $source / $NewsPieceAge',
+                    '$howPopular  $source / $newsPieceAge',
                     style: TextStyle(color: Colors.black54),
                   ),
                 ],
@@ -114,7 +114,7 @@ class NewsItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(5),
               child: Image.network(
-                image_url,
+                imageUrl,
                 fit: BoxFit.cover,
                 height: 84,
                 width: MediaQuery.of(context).size.width * 0.35,
