@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/article_scren.dart';
 
 class NewsItem extends StatelessWidget {
   String imageUrl;
@@ -34,93 +35,99 @@ class NewsItem extends StatelessWidget {
       }
     }
 
-    return Dismissible(
-      key: Key('key'),
-      secondaryBackground: Container(
-        color: Theme.of(context).primaryColor,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              'MARK AS READ',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
+    return InkWell(
+      onTap: () {
+        print('hola');
+        Navigator.of(context).pushNamed(ArticleScreen.routeName);
+      },
+      child: Dismissible(
+        key: Key('key'),
+        secondaryBackground: Container(
+          color: Theme.of(context).primaryColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                'MARK AS READ',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
               ),
-            ),
-            SizedBox(
-              width: 5,
-            ),
-            Icon(
-              Icons.check,
-            ),
-            SizedBox(
-              width: 10,
-            )
-          ],
-        ),
-      ),
-      background: Container(
-        color: Theme.of(context).primaryColor,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 10,
-            ),
-            Icon(
-              Icons.bookmark_outline,
-            ),
-            SizedBox(
-              width: 5,
-            ),
-            Text(
-              'MARK AS READ',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
+              SizedBox(
+                width: 5,
               ),
-            ),
-          ],
+              Icon(
+                Icons.check,
+              ),
+              SizedBox(
+                width: 10,
+              )
+            ],
+          ),
         ),
-      ),
-      child: Container(
-        padding: EdgeInsets.all(10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width * 0.55,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 19,
-                      fontWeight: FontWeight.w600,
+        background: Container(
+          color: Theme.of(context).primaryColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              Icon(
+                Icons.bookmark_outline,
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Text(
+                'READ LATER',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
+        ),
+        child: Container(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.55,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Text(
-                    '$howPopular  $source / $newsPieceAge',
-                    style: TextStyle(color: Colors.black54),
-                  ),
-                ],
+                    SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                      '$howPopular  $source / $newsPieceAge',
+                      style: TextStyle(color: Colors.black54),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: Image.network(
-                imageUrl,
-                fit: BoxFit.cover,
-                height: 84,
-                width: MediaQuery.of(context).size.width * 0.35,
-              ),
-            )
-          ],
+              ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  height: 84,
+                  width: MediaQuery.of(context).size.width * 0.35,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

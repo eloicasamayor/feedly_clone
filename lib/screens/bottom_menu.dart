@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './search_screen.dart';
 import './add_content_screen.dart';
 import './main_feed_screen.dart';
 import './lateral_menu.dart';
@@ -14,14 +15,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _selectedPageIndex = 0;
+  int _selectedPageIndex = 2;
+  String appBarTitle = "Feed";
 
   List _appScreens = [
     Text('nothing'),
     Text('saved items screen'),
     MainFeedScreen(),
     AddContentScreen(),
-    Text('search screen'),
+    SearchScreen(),
+  ];
+  List _screenTitles = [
+    '..',
+    'Read Later',
+    'Feed',
+    'Add Content',
+    'Power Search',
   ];
 
   void _onItemTapped(int index, BuildContext ctx) {
@@ -42,12 +51,17 @@ class _MyHomePageState extends State<MyHomePage> {
         drawer: LateralMenu(),
         appBar: AppBar(
           elevation: 1,
-          title: Text(widget.title),
-          leading: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.circle_outlined),
-            color: Colors.black38,
-          ),
+          title: Text(_screenTitles[_selectedPageIndex]),
+          automaticallyImplyLeading: false,
+          //title: Text('hola'),
+
+          leading: _selectedPageIndex == 2
+              ? IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.circle_outlined),
+                  color: Colors.black38,
+                )
+              : null,
           bottom: _selectedPageIndex == 2
               ? TabBar(
                   tabs: [
@@ -70,16 +84,24 @@ class _MyHomePageState extends State<MyHomePage> {
               : null,
           titleTextStyle: TextStyle(color: Colors.black38),
           actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.check),
-              color: Colors.black38,
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.more_horiz),
-              color: Colors.black38,
-            ),
+            if (_selectedPageIndex == 2 || _selectedPageIndex == 1)
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.check),
+                color: Colors.black38,
+              ),
+            if (_selectedPageIndex == 2 || _selectedPageIndex == 1)
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.more_horiz),
+                color: Colors.black38,
+              ),
+            if (_selectedPageIndex == 3)
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.translate),
+                color: Colors.black38,
+              ),
           ],
         ),
         bottomNavigationBar: Builder(
