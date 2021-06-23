@@ -30,7 +30,7 @@ class SearchScreen extends StatelessWidget {
                     Icons.search,
                     size: 30,
                   ),
-                  hintText: 'Type a name, topic, or paste a URL',
+                  hintText: 'Find specific articles in your Feedly',
                   hintStyle: TextStyle(
                     fontSize: 18,
                     color: Colors.black38,

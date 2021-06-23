@@ -14,7 +14,7 @@ class NewsItem extends StatelessWidget {
     final title = _newsListItem['title'].toString();
     final source = _newsListItem['source'].toString();
     final imageUrl = _newsListItem['image_url'].toString();
-    final articleUrl = _newsListItem['article_url'].toString();
+    //final articleUrl = _newsListItem['article_url'].toString();
     final date = DateTime.fromMillisecondsSinceEpoch(
         (_newsListItem['date'] as int) * 1000);
     final newsText = _newsListItem['news_text']
@@ -22,7 +22,9 @@ class NewsItem extends StatelessWidget {
         .substring(0, 140); // maximo 150 caracteres
     final howPopular = _newsListItem['how_popular'] as int;
 
+    print(_modalValues);
     int? _viewStyle = _modalValues['view'];
+    int? _density = _modalValues['density'];
 
     Duration timeSincePublication = DateTime.now().difference(date);
     int daysSincePublication = timeSincePublication.inDays;
@@ -101,6 +103,7 @@ class NewsItem extends StatelessWidget {
           padding: EdgeInsets.all(10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 width: _viewStyle == 1
@@ -132,14 +135,26 @@ class NewsItem extends StatelessWidget {
                     SizedBox(
                       height: 3,
                     ),
-                    if (_viewStyle == 0)
-                      Text('$newsText...',
-                          style:
-                              TextStyle(color: Colors.black45, fontSize: 16)),
+                    if (_density == 1)
+                      Text(
+                        '$newsText...',
+                        key: Key('newsText'),
+                        style: TextStyle(
+                          color: Colors.black38,
+                          fontSize: 17,
+                        ),
+                      ),
+                    SizedBox(
+                      height: 4,
+                    ),
                     Text(
                       '$howPopular  $source / $newsPieceAge',
+                      key: Key('newsInfo'),
                       //'$howPopular  ${_viewStyle.toString()} / $newsPieceAge',
-                      style: TextStyle(color: Colors.black54),
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 16,
+                      ),
                     ),
                   ],
                 ),

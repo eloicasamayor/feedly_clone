@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/modal_feed_style.dart';
+import '../widgets/modal_content_language.dart';
+import '../widgets/modal_feed_counter.dart';
 import './search_screen.dart';
 import './add_content_screen.dart';
 import './main_feed_screen.dart';
@@ -43,20 +45,33 @@ class _MainMenuState extends State<MainMenu> {
   ];
 
   void _onItemTapped(int index, BuildContext ctx) {
-    setState(() {
-      _selectedPageIndex = index;
-    });
     if (index == 0) {
       Scaffold.of(ctx).openDrawer();
     } else if (index == 2) {
       setState(() {
+        _selectedPageIndex = index;
         _bodyWidget = MainFeedScreen(_modalValues);
       });
     } else {
       setState(() {
+        _selectedPageIndex = index;
         _bodyWidget = _appScreens[index];
       });
     }
+  }
+
+  void _markAsRead() {
+    final snackBar = SnackBar(
+      content: Text(
+        'Articles marked as read',
+        style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20),
+      ),
+      backgroundColor: Colors.green[100],
+    );
+
+// Find the ScaffoldMessenger in the widget tree
+// and use it to show a SnackBar.
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
@@ -71,7 +86,18 @@ class _MainMenuState extends State<MainMenu> {
           automaticallyImplyLeading: false,
           leading: _selectedPageIndex == 2
               ? IconButton(
-                  onPressed: () {},
+                  onPressed: () => showModalBottomSheet<void>(
+                      context: context,
+                      isScrollControlled: true,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
+                      backgroundColor: Colors.white,
+                      builder: (context) {
+                        return ModalFeedCounter();
+                      }),
                   icon: Icon(Icons.circle_outlined),
                   color: Colors.black38,
                 )
@@ -100,7 +126,7 @@ class _MainMenuState extends State<MainMenu> {
           actions: [
             if (_selectedPageIndex == 2 || _selectedPageIndex == 1)
               IconButton(
-                onPressed: () {},
+                onPressed: _markAsRead,
                 icon: Icon(Icons.check),
                 color: Colors.black38,
               ),
@@ -130,7 +156,18 @@ class _MainMenuState extends State<MainMenu> {
               ),
             if (_selectedPageIndex == 3)
               IconButton(
-                onPressed: () {},
+                onPressed: () => showModalBottomSheet<void>(
+                    context: context,
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                    ),
+                    backgroundColor: Colors.white,
+                    builder: (context) {
+                      return ModalContentLanguage();
+                    }),
                 icon: Icon(Icons.translate),
                 color: Colors.black38,
               ),
