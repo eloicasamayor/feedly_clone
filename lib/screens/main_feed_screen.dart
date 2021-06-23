@@ -3,7 +3,8 @@ import '../models/news_data.dart';
 import '../widgets/news_item.dart';
 
 class MainFeedScreen extends StatelessWidget {
-  MainFeedScreen({Key? key}) : super(key: key);
+  Map<String, int> _modalValues;
+  MainFeedScreen(this._modalValues);
 
   Future<void> _pullRefresh() async {}
   final List<Map<String, Object>> _newsList = NewsData().newsList;
@@ -28,9 +29,9 @@ class MainFeedScreen extends StatelessWidget {
                 ),
               ),
             ),
-            NewsItem(0),
-            NewsItem(1),
-            NewsItem(2),
+            NewsItem(0, this._modalValues),
+            NewsItem(1, this._modalValues),
+            NewsItem(2, this._modalValues),
           ],
         ),
         onRefresh: _pullRefresh,

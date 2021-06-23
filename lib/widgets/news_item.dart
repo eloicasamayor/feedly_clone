@@ -5,10 +5,8 @@ import '../models/news_data.dart';
 
 class NewsItem extends StatelessWidget {
   int id;
-
-  NewsItem(
-    this.id,
-  );
+  Map<String, int> _modalValues;
+  NewsItem(this.id, this._modalValues);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +17,12 @@ class NewsItem extends StatelessWidget {
     final articleUrl = _newsListItem['article_url'].toString();
     final date = DateTime.fromMillisecondsSinceEpoch(
         (_newsListItem['date'] as int) * 1000);
-    final newsText = _newsListItem['news_text'].toString();
+    final newsText = _newsListItem['news_text']
+        .toString()
+        .substring(0, 140); // maximo 150 caracteres
     final howPopular = _newsListItem['how_popular'] as int;
+
+    int? _viewStyle = _modalValues['view'];
 
     Duration timeSincePublication = DateTime.now().difference(date);
     int daysSincePublication = timeSincePublication.inDays;
@@ -101,10 +103,25 @@ class NewsItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                width: MediaQuery.of(context).size.width * 0.55,
+                width: _viewStyle == 1
+                    ? MediaQuery.of(context).size.width * 0.55
+                    : MediaQuery.of(context).size.width * 0.92,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (_viewStyle == 2)
+                      Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Image.network(
+                            imageUrl,
+                            fit: BoxFit.cover,
+                            height: 170,
+                            width: MediaQuery.of(context).size.width * 92,
+                          ),
+                        ),
+                      ),
                     Text(
                       title,
                       style: TextStyle(
@@ -115,22 +132,28 @@ class NewsItem extends StatelessWidget {
                     SizedBox(
                       height: 3,
                     ),
+                    if (_viewStyle == 0)
+                      Text('$newsText...',
+                          style:
+                              TextStyle(color: Colors.black45, fontSize: 16)),
                     Text(
                       '$howPopular  $source / $newsPieceAge',
+                      //'$howPopular  ${_viewStyle.toString()} / $newsPieceAge',
                       style: TextStyle(color: Colors.black54),
                     ),
                   ],
                 ),
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                  height: 84,
-                  width: MediaQuery.of(context).size.width * 0.35,
-                ),
-              )
+              if (_viewStyle == 1)
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                    height: 84,
+                    width: MediaQuery.of(context).size.width * 0.35,
+                  ),
+                )
             ],
           ),
         ),

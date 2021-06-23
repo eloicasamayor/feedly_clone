@@ -17,23 +17,20 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
-  Map<String, int>? _modalValues;
+  late Map<String, int> _modalValues;
   @override
   void initState() {
     super.initState();
-    if (_modalValues == null) {
-      _modalValues = {'view': 0, 'density': 0};
-      print(_modalValues);
-    }
+    _modalValues = {'view': 0, 'density': 0};
   }
 
   int _selectedPageIndex = 2;
   String appBarTitle = "Feed";
-
+  Widget? _bodyWidget;
   List _appScreens = [
     Text('nothing'),
     Text('saved items screen'),
-    MainFeedScreen(),
+    Text('nothing'),
     AddContentScreen(),
     SearchScreen(),
   ];
@@ -46,13 +43,19 @@ class _MainMenuState extends State<MainMenu> {
   ];
 
   void _onItemTapped(int index, BuildContext ctx) {
-    print(_modalValues);
-    if (index != 0) {
+    setState(() {
+      _selectedPageIndex = index;
+    });
+    if (index == 0) {
+      Scaffold.of(ctx).openDrawer();
+    } else if (index == 2) {
       setState(() {
-        _selectedPageIndex = index;
+        _bodyWidget = MainFeedScreen(_modalValues);
       });
     } else {
-      Scaffold.of(ctx).openDrawer();
+      setState(() {
+        _bodyWidget = _appScreens[index];
+      });
     }
   }
 
@@ -118,6 +121,7 @@ class _MainMenuState extends State<MainMenu> {
                   (valor) {
                     if (valor != null) {
                       _modalValues = valor;
+                      _onItemTapped(_selectedPageIndex, context);
                     }
                   },
                 ),
@@ -168,7 +172,7 @@ class _MainMenuState extends State<MainMenu> {
             ],
           ),
         ),
-        body: _appScreens[_selectedPageIndex],
+        body: _bodyWidget,
       ),
     );
   }
