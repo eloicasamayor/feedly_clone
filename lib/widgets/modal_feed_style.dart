@@ -4,15 +4,23 @@ enum FeedViewStyle { textOnly, Magazine, Cards }
 enum FeedDensityStyle { Compact, Comfortable }
 
 class ModalFeedStyle extends StatefulWidget {
-  ModalFeedStyle({Key? key}) : super(key: key);
+  final _modalValues;
+  ModalFeedStyle(this._modalValues);
 
   @override
   _ModalFeedStyleState createState() => _ModalFeedStyleState();
 }
 
 class _ModalFeedStyleState extends State<ModalFeedStyle> {
-  FeedViewStyle? _viewStyle = FeedViewStyle.Magazine;
+  FeedViewStyle? _viewStyle;
   FeedDensityStyle? _densityStyle = FeedDensityStyle.Compact;
+
+  @override
+  void initState() {
+    _viewStyle = FeedViewStyle.values[widget._modalValues['view']];
+    _densityStyle = FeedDensityStyle.values[widget._modalValues['density']];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +42,10 @@ class _ModalFeedStyleState extends State<ModalFeedStyle> {
               setState(() {
                 _viewStyle = value;
               });
-              //Navigator.of(context).pop();
+              Navigator.of(context).pop({
+                'view': _viewStyle!.index,
+                'density': _densityStyle!.index,
+              });
             },
           ),
           RadioListTile<FeedViewStyle>(
@@ -48,6 +59,10 @@ class _ModalFeedStyleState extends State<ModalFeedStyle> {
               setState(() {
                 _viewStyle = value;
               });
+              Navigator.of(context).pop({
+                'view': _viewStyle!.index,
+                'density': _densityStyle!.index,
+              });
             },
           ),
           RadioListTile<FeedViewStyle>(
@@ -60,6 +75,10 @@ class _ModalFeedStyleState extends State<ModalFeedStyle> {
             onChanged: (FeedViewStyle? value) {
               setState(() {
                 _viewStyle = value;
+              });
+              Navigator.of(context).pop({
+                'view': _viewStyle!.index,
+                'density': _densityStyle!.index,
               });
             },
           ),
@@ -75,6 +94,10 @@ class _ModalFeedStyleState extends State<ModalFeedStyle> {
               setState(() {
                 _densityStyle = value;
               });
+              Navigator.of(context).pop({
+                'view': _viewStyle!.index,
+                'density': _densityStyle!.index,
+              });
             },
           ),
           RadioListTile<FeedDensityStyle>(
@@ -87,6 +110,10 @@ class _ModalFeedStyleState extends State<ModalFeedStyle> {
             onChanged: (FeedDensityStyle? value) {
               setState(() {
                 _densityStyle = value;
+              });
+              Navigator.of(context).pop({
+                'view': _viewStyle!.index,
+                'density': _densityStyle!.index,
               });
             },
           ),

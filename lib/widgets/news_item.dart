@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
+
 import '../screens/article_scren.dart';
+import '../models/news_data.dart';
 
 class NewsItem extends StatelessWidget {
   int id;
-  String imageUrl;
-  String source;
-  String articleUrl;
-  String title;
-  DateTime date;
-  String newsText;
-  int howPopular;
 
   NewsItem(
     this.id,
-    this.title,
-    this.source,
-    this.imageUrl,
-    this.articleUrl,
-    this.date,
-    this.newsText,
-    this.howPopular,
   );
 
   @override
   Widget build(BuildContext context) {
+    final _newsListItem = NewsData().newsList[id];
+    final title = _newsListItem['title'].toString();
+    final source = _newsListItem['source'].toString();
+    final imageUrl = _newsListItem['image_url'].toString();
+    final articleUrl = _newsListItem['article_url'].toString();
+    final date = DateTime.fromMillisecondsSinceEpoch(
+        (_newsListItem['date'] as int) * 1000);
+    final newsText = _newsListItem['news_text'].toString();
+    final howPopular = _newsListItem['how_popular'] as int;
+
     Duration timeSincePublication = DateTime.now().difference(date);
     int daysSincePublication = timeSincePublication.inDays;
     String newsPieceAge = '$daysSincePublication d';
@@ -39,7 +37,6 @@ class NewsItem extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        print('hola');
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (_) {

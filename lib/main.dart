@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/bottom_menu.dart';
+import 'screens/main_menu.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,7 +36,9 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
         ),
       ),
-      home: MyHomePage(title: 'Today'),
+      home: MainMenu(
+        'Today',
+      ),
     );
   }
 }

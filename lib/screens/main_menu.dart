@@ -6,16 +6,27 @@ import './add_content_screen.dart';
 import './main_feed_screen.dart';
 import './lateral_menu.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class MainMenu extends StatefulWidget {
+  MainMenu(
+    this.title,
+  );
 
   final String title;
-
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MainMenuState createState() => _MainMenuState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainMenuState extends State<MainMenu> {
+  Map<String, int>? _modalValues;
+  @override
+  void initState() {
+    super.initState();
+    if (_modalValues == null) {
+      _modalValues = {'view': 0, 'density': 0};
+      print(_modalValues);
+    }
+  }
+
   int _selectedPageIndex = 2;
   String appBarTitle = "Feed";
 
@@ -35,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   void _onItemTapped(int index, BuildContext ctx) {
+    print(_modalValues);
     if (index != 0) {
       setState(() {
         _selectedPageIndex = index;
@@ -54,8 +66,6 @@ class _MyHomePageState extends State<MyHomePage> {
           elevation: 1,
           title: Text(_screenTitles[_selectedPageIndex]),
           automaticallyImplyLeading: false,
-          //title: Text('hola'),
-
           leading: _selectedPageIndex == 2
               ? IconButton(
                   onPressed: () {},
@@ -93,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             if (_selectedPageIndex == 2 || _selectedPageIndex == 1)
               IconButton(
-                onPressed: () => showModalBottomSheet(
+                onPressed: () => showModalBottomSheet<Map<String, int>>(
                     context: context,
                     isScrollControlled: true,
                     shape: RoundedRectangleBorder(
@@ -103,8 +113,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     backgroundColor: Colors.white,
                     builder: (context) {
-                      return ModalFeedStyle();
-                    }),
+                      return ModalFeedStyle(_modalValues);
+                    }).then(
+                  (valor) {
+                    if (valor != null) {
+                      _modalValues = valor;
+                    }
+                  },
+                ),
                 icon: Icon(Icons.more_horiz),
                 color: Colors.black38,
               ),
