@@ -127,10 +127,7 @@ class NewsItem extends StatelessWidget {
                       ),
                     Text(
                       title,
-                      style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: Theme.of(context).textTheme.headline2,
                     ),
                     SizedBox(
                       height: 3,
@@ -139,10 +136,7 @@ class NewsItem extends StatelessWidget {
                       Text(
                         '$newsText...',
                         key: Key('newsText'),
-                        style: TextStyle(
-                          color: Colors.black38,
-                          fontSize: 17,
-                        ),
+                        style: Theme.of(context).textTheme.bodyText2,
                       ),
                     SizedBox(
                       height: 4,
@@ -151,10 +145,7 @@ class NewsItem extends StatelessWidget {
                       '$howPopular  $source / $newsPieceAge',
                       key: Key('newsInfo'),
                       //'$howPopular  ${_viewStyle.toString()} / $newsPieceAge',
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 16,
-                      ),
+                      style: Theme.of(context).textTheme.subtitle2,
                     ),
                   ],
                 ),

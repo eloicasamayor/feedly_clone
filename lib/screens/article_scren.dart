@@ -1,3 +1,4 @@
+import 'package:feedly_clone/widgets/modal_theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -34,38 +35,44 @@ class ArticleScreen extends StatelessWidget {
         title: null,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => showModalBottomSheet<void>(
+                context: context,
+                isScrollControlled: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20),
+                  ),
+                ),
+                backgroundColor: Theme.of(context).primaryColorLight,
+                builder: (context) {
+                  return ModalThemeConfig();
+                }),
             icon: Icon(
               Icons.format_size_outlined,
-              color: Colors.black38,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(
               Icons.bookmark_border,
-              color: Colors.black38,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(
               Icons.star_border_outlined,
-              color: Colors.black38,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(
               Icons.share_outlined,
-              color: Colors.black38,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(
               Icons.more_horiz_outlined,
-              color: Colors.black38,
             ),
           ),
         ],
@@ -77,31 +84,19 @@ class ArticleScreen extends StatelessWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             InkWell(
               onTap: () => _launchInBrowser(_articleUrl),
-              child: Text(
-                _title,
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  height: 1.1,
-                ),
-              ),
+              child: Text(_title, style: Theme.of(context).textTheme.headline1),
             ),
             SizedBox(height: 10),
             Text(
               _source,
-              style: TextStyle(
-                fontSize: 15,
-              ),
+              style: Theme.of(context).textTheme.subtitle2,
             ),
             SizedBox(height: 25),
             Image.network(_imageUrl),
             SizedBox(height: 20),
             Text(
               _articleBody,
-              style: TextStyle(
-                fontSize: 16,
-                height: 1.8,
-              ),
+              style: Theme.of(context).textTheme.bodyText1,
             ),
             SizedBox(
               height: 30,
