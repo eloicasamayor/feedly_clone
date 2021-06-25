@@ -1,48 +1,11 @@
 import 'package:flutter/material.dart';
 import './light_theme.dart';
-/*
-final lightTheme = ThemeData.light().copyWith(
-  primaryColor: Color.fromRGBO(43, 178, 76, 1),
-  textTheme: TextTheme(
-    headline1: TextStyle(
-      fontSize: 30,
-      fontWeight: FontWeight.bold,
-      height: 1.1,
-    ),
-    headline2: TextStyle(
-      fontSize: 19,
-      fontWeight: FontWeight.w600,
-      height: 1.1,
-    ),
-    bodyText1: TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w400,
-      height: 1.5,
-    ),
-    bodyText2: TextStyle(
-      color: Colors.black38,
-      fontSize: 15,
-    ),
-    subtitle2: TextStyle(
-      fontSize: 14,
-      height: 1.5,
-      color: Colors.black54,
-      fontWeight: FontWeight.w400,
-    ),
-  ),
-  primaryColorBrightness: Brightness.light,
-  appBarTheme: AppBarTheme(
-    backgroundColor: Colors.white,
-    centerTitle: true,
-  ),
-);
-*/
 
 final darkTheme = lightTheme.copyWith(
   brightness: Brightness.dark,
   primaryColor: Color(0xff212121),
   primaryColorBrightness: Brightness.dark,
-  primaryColorLight: Color(0xff9e9e9e),
+  primaryColorLight: Color(0xff808080),
   primaryColorDark: Color(0xff000000),
   accentColor: Color(0xff4caf50),
   accentColorBrightness: Brightness.light,
@@ -64,6 +27,15 @@ final darkTheme = lightTheme.copyWith(
   indicatorColor: Color(0xff4caf50),
   hintColor: Color(0x80ffffff),
   errorColor: Color(0xffd32f2f),
+  appBarTheme: AppBarTheme(
+    centerTitle: true,
+    textTheme: TextTheme(
+      headline1: TextStyle(
+        color: Colors.white,
+        fontSize: 16,
+      ),
+    ),
+  ),
   textTheme: TextTheme(
     headline1: TextStyle(
       fontSize: 30,
@@ -72,6 +44,16 @@ final darkTheme = lightTheme.copyWith(
     ),
     headline2: TextStyle(
       fontSize: 19,
+      fontWeight: FontWeight.w600,
+      height: 1.1,
+    ),
+    headline3: TextStyle(
+      color: Color.fromARGB(255, 0, 100, 220),
+      fontWeight: FontWeight.w500,
+      fontSize: 15,
+    ),
+    headline4: TextStyle(
+      fontSize: 17,
       fontWeight: FontWeight.w600,
       height: 1.1,
     ),
@@ -175,7 +157,7 @@ final darkTheme = lightTheme.copyWith(
       fontStyle: FontStyle.normal,
     ),
     filled: false,
-    fillColor: Color(0x00000000),
+    fillColor: Colors.transparent,
     errorBorder: UnderlineInputBorder(
       borderSide: BorderSide(
         color: Color(0xff000000),

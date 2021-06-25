@@ -25,14 +25,10 @@ class LateralMenu extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
             leading: Icon(
               Icons.crop_square_outlined,
-              color: Colors.black26,
             ),
             title: Text(
               'Today',
-              style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
             ),
           ),
           ListTile(
@@ -41,14 +37,10 @@ class LateralMenu extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
             leading: Icon(
               Icons.bookmark_outline,
-              color: Colors.black26,
             ),
             title: Text(
               'Read Later',
-              style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
             ),
           ),
           ListTile(
@@ -57,14 +49,10 @@ class LateralMenu extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
             leading: Icon(
               Icons.upgrade_outlined,
-              color: Colors.black26,
             ),
             title: Text(
               'Updgrade',
-              style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
             ),
           ),
           SizedBox(
@@ -73,9 +61,9 @@ class LateralMenu extends StatelessWidget {
           Text(
             'Feeds',
             style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.black26),
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           ListTile(
             dense: true,
@@ -83,21 +71,17 @@ class LateralMenu extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
             leading: Icon(
               Icons.menu,
-              color: Colors.black26,
             ),
             title: Text(
               'All',
-              style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
             ),
           ),
           InkWell(
             onTap: () {},
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.black26),
+                border: Border.all(color: Theme.of(context).primaryColorLight),
                 borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
               height: 50,
@@ -109,7 +93,6 @@ class LateralMenu extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black54,
                     fontSize: 15,
                   ),
                 ),

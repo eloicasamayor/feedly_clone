@@ -108,7 +108,8 @@ class ArticleScreen extends StatelessWidget {
                     onTap: () {},
                     child: Container(
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black26),
+                        border: Border.all(
+                            color: Theme.of(context).primaryColorLight),
                         borderRadius: BorderRadius.all(Radius.circular(5)),
                       ),
                       height: 55,
@@ -120,7 +121,6 @@ class ArticleScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black54,
                             fontSize: 15,
                           ),
                         ),
@@ -133,7 +133,8 @@ class ArticleScreen extends StatelessWidget {
                     onTap: () => _launchInBrowser(_articleUrl),
                     child: Container(
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black26),
+                        border: Border.all(
+                            color: Theme.of(context).primaryColorLight),
                         borderRadius: BorderRadius.all(Radius.circular(5)),
                       ),
                       height: 55,
@@ -145,7 +146,6 @@ class ArticleScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black54,
                             fontSize: 15,
                           ),
                         ),

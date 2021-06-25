@@ -4,13 +4,23 @@ final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: Color(0xffffffff),
   primaryColorBrightness: Brightness.light,
-  primaryColorLight: Color(0xffe6e6e6),
+  primaryColorLight: Color(0xffd1d1d1),
   primaryColorDark: Color(0xff4caf50),
   accentColor: Color(0xff4caf50),
   accentColorBrightness: Brightness.dark,
   canvasColor: Color(0xfffafafa),
   scaffoldBackgroundColor: Color(0xfffafafa),
   bottomAppBarColor: Color(0xffffffff),
+  appBarTheme: AppBarTheme(
+    centerTitle: true,
+    textTheme: TextTheme(
+      headline1: TextStyle(
+        color: Colors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ),
   cardColor: Color(0xffffffff),
   dividerColor: Color(0xff999999),
   highlightColor: Color(0x66bcbcbc),
@@ -73,6 +83,17 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w600,
       height: 1.1,
     ),
+    headline3: TextStyle(
+      color: Color.fromARGB(255, 0, 100, 220),
+      fontWeight: FontWeight.w500,
+      fontSize: 15,
+    ),
+    headline4: TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.w600,
+      height: 1.1,
+      color: Colors.white,
+    ),
     bodyText1: TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w400,
@@ -115,7 +136,6 @@ final ThemeData lightTheme = ThemeData(
       fontStyle: FontStyle.normal,
     ),
     errorMaxLines: null,
-    hasFloatingPlaceholder: true,
     isDense: false,
     contentPadding: EdgeInsets.only(top: 12, bottom: 12, left: 12, right: 12),
     isCollapsed: false,
@@ -138,7 +158,7 @@ final ThemeData lightTheme = ThemeData(
       fontStyle: FontStyle.normal,
     ),
     filled: true,
-    fillColor: Color(0xff4caf50),
+    fillColor: Colors.transparent,
     errorBorder: UnderlineInputBorder(
       borderSide: BorderSide(
         color: Color(0xff000000),
@@ -226,8 +246,8 @@ final ThemeData lightTheme = ThemeData(
   ),
   tabBarTheme: TabBarTheme(
     indicatorSize: TabBarIndicatorSize.tab,
-    labelColor: Color(0xff4caf50),
-    unselectedLabelColor: Color(0xb24caf50),
+    labelColor: Colors.black,
+    unselectedLabelColor: Colors.black54,
   ),
   chipTheme: ChipThemeData(
     backgroundColor: Color(0x1f000000),

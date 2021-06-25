@@ -2,15 +2,24 @@ import 'package:flutter/material.dart';
 import '../models/news_data.dart';
 import '../widgets/news_item.dart';
 
-class MainFeedScreen extends StatelessWidget {
+class MainFeedScreen extends StatefulWidget {
   Map<String, int> _modalValues;
   MainFeedScreen(this._modalValues);
 
-  Future<void> _pullRefresh() async {}
+  @override
+  _MainFeedScreenState createState() => _MainFeedScreenState();
+}
+
+class _MainFeedScreenState extends State<MainFeedScreen> {
+  Future<void> _pullRefresh() async {
+    setState(() {});
+  }
+
   final List<Map<String, Object>> _newsList = NewsData().newsList;
 
   @override
   Widget build(BuildContext context) {
+    print(this.widget._modalValues);
     return TabBarView(children: [
       RefreshIndicator(
         child: ListView(
@@ -29,9 +38,9 @@ class MainFeedScreen extends StatelessWidget {
                 ),
               ),
             ),
-            NewsItem(0, this._modalValues),
-            NewsItem(1, this._modalValues),
-            NewsItem(2, this._modalValues),
+            NewsItem(0, this.widget._modalValues),
+            NewsItem(1, this.widget._modalValues),
+            NewsItem(2, this.widget._modalValues),
           ],
         ),
         onRefresh: _pullRefresh,

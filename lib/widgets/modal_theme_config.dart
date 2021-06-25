@@ -10,26 +10,63 @@ class ModalThemeConfig extends StatefulWidget {
 }
 
 class _ModalThemeConfigState extends State<ModalThemeConfig> {
+  double _currentSliderValue = 20;
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<DynamicTheme>(context);
     return Container(
       padding: EdgeInsets.all(20),
-      height: 150,
-      child: Column(children: [
-        Text(
-          'Dark Theme',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-        Switch(
-          value: themeProvider.getDarkMode(),
-          onChanged: (value) {
-            setState(() {
-              themeProvider.changeDarkMode(value);
-            });
-          },
-        ),
-      ]),
+      height: 250,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Dark Theme',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+              Switch(
+                value: themeProvider.getDarkMode(),
+                onChanged: (value) {
+                  setState(() {
+                    themeProvider.changeDarkMode(value);
+                  });
+                },
+              ),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Text Size',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+              Row(
+                children: [
+                  Text('A'),
+                  Slider(
+                      value: _currentSliderValue,
+                      min: 0,
+                      max: 20,
+                      divisions: 2,
+                      onChanged: (double value) {
+                        setState(() {
+                          _currentSliderValue = value;
+                        });
+                      }),
+                  Text(
+                    'A',
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),
+                  ),
+                ],
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }

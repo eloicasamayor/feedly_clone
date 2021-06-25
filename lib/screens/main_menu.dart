@@ -23,7 +23,11 @@ class _MainMenuState extends State<MainMenu> {
   @override
   void initState() {
     super.initState();
-    _modalValues = {'view': 0, 'density': 0};
+    _modalValues = {'view': 1, 'density': 0};
+    setState(() {
+      _selectedPageIndex = 2;
+      _bodyWidget = MainFeedScreen(_modalValues);
+    });
   }
 
   int _selectedPageIndex = 2;
@@ -45,6 +49,7 @@ class _MainMenuState extends State<MainMenu> {
   ];
 
   void _onItemTapped(int index, BuildContext ctx) {
+    print(_modalValues);
     if (index == 0) {
       Scaffold.of(ctx).openDrawer();
     } else if (index == 2) {
@@ -82,7 +87,12 @@ class _MainMenuState extends State<MainMenu> {
         drawer: LateralMenu(),
         appBar: AppBar(
           elevation: 1,
-          title: Text(_screenTitles[_selectedPageIndex]),
+          title: Text(
+            _screenTitles[_selectedPageIndex],
+            style: Theme.of(context).appBarTheme.textTheme != null
+                ? Theme.of(context).appBarTheme.textTheme!.headline1
+                : TextStyle(color: Colors.black),
+          ),
           automaticallyImplyLeading: false,
           leading: _selectedPageIndex == 2
               ? IconButton(
@@ -94,12 +104,11 @@ class _MainMenuState extends State<MainMenu> {
                           top: Radius.circular(20),
                         ),
                       ),
-                      backgroundColor: Colors.white,
+                      backgroundColor: Theme.of(context).primaryColorLight,
                       builder: (context) {
                         return ModalFeedCounter();
                       }),
                   icon: Icon(Icons.circle_outlined),
-                  color: Colors.black38,
                 )
               : null,
           bottom: _selectedPageIndex == 2
@@ -128,7 +137,6 @@ class _MainMenuState extends State<MainMenu> {
               IconButton(
                 onPressed: _markAsRead,
                 icon: Icon(Icons.check),
-                color: Colors.black38,
               ),
             if (_selectedPageIndex == 2 || _selectedPageIndex == 1)
               IconButton(
@@ -140,7 +148,7 @@ class _MainMenuState extends State<MainMenu> {
                         top: Radius.circular(20),
                       ),
                     ),
-                    backgroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).primaryColorLight,
                     builder: (context) {
                       return ModalFeedStyle(_modalValues);
                     }).then(
@@ -152,7 +160,6 @@ class _MainMenuState extends State<MainMenu> {
                   },
                 ),
                 icon: Icon(Icons.more_horiz),
-                color: Colors.black38,
               ),
             if (_selectedPageIndex == 3)
               IconButton(
@@ -169,15 +176,14 @@ class _MainMenuState extends State<MainMenu> {
                       return ModalContentLanguage();
                     }),
                 icon: Icon(Icons.translate),
-                color: Colors.black38,
               ),
           ],
         ),
         bottomNavigationBar: Builder(
           builder: (context) => BottomNavigationBar(
             onTap: (tabIndex) => this._onItemTapped(tabIndex, context),
-            backgroundColor: Colors.white,
-            unselectedItemColor: Colors.black38,
+            //backgroundColor: Colors.white,
+            unselectedItemColor: Theme.of(context).primaryColorLight,
             selectedItemColor: Theme.of(context).accentColor,
             currentIndex: _selectedPageIndex,
             showSelectedLabels: false,

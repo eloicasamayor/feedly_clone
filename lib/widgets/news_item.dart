@@ -52,7 +52,7 @@ class NewsItem extends StatelessWidget {
       child: Dismissible(
         key: Key('key'),
         secondaryBackground: Container(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).accentColor,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -76,7 +76,7 @@ class NewsItem extends StatelessWidget {
           ),
         ),
         background: Container(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).accentColor,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -138,9 +138,6 @@ class NewsItem extends StatelessWidget {
                         key: Key('newsText'),
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
-                    SizedBox(
-                      height: 4,
-                    ),
                     Text(
                       '$howPopular  $source / $newsPieceAge',
                       key: Key('newsInfo'),
