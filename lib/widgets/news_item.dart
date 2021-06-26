@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-import '../screens/article_scren.dart';
+import '../screens/article_screen.dart';
 import '../models/news_data.dart';
 
 class NewsItem extends StatelessWidget {
@@ -38,6 +40,10 @@ class NewsItem extends StatelessWidget {
         newsPieceAge = '$minutesSincePublication min';
       }
     }
+    final Map<DismissDirection, double> _dismissThresholds = {
+      DismissDirection.startToEnd: 1,
+      DismissDirection.endToStart: 1
+    };
 
     return InkWell(
       onTap: () {
@@ -50,6 +56,11 @@ class NewsItem extends StatelessWidget {
         );
       },
       child: Dismissible(
+        dismissThresholds: _dismissThresholds,
+        onDismissed: (direction) {
+          print('dismissed on $direction');
+          HapticFeedback.mediumImpact();
+        },
         key: Key('key'),
         secondaryBackground: Container(
           color: Theme.of(context).accentColor,

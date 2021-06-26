@@ -31,11 +31,7 @@ class _MainFeedScreenState extends State<MainFeedScreen> {
               ),
               child: Text(
                 'Most popular',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 0, 100, 220),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15,
-                ),
+                style: Theme.of(context).textTheme.headline3,
               ),
             ),
             NewsItem(0, this.widget._modalValues),
@@ -46,10 +42,20 @@ class _MainFeedScreenState extends State<MainFeedScreen> {
         onRefresh: _pullRefresh,
       ),
       SingleChildScrollView(
-        child: Column(
-          children: [
-            Text('2'),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 15,
+            horizontal: 8,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Trending in Tech',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+            ],
+          ),
         ),
       ),
     ]);
