@@ -104,12 +104,18 @@ class SearchScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Text('Search By Example'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Search By Example'),
+            ),
             TextButton(
               onPressed: () {},
               child: Text('"Elon Musk"'),
             ),
-            Text('Put phrase inside quotes for an exact match'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Put phrase inside quotes for an exact match'),
+            ),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './saved_feed.dart';
 import '../widgets/modal_feed_style.dart';
 import '../widgets/modal_content_language.dart';
 import '../widgets/modal_feed_counter.dart';
@@ -35,7 +36,7 @@ class _MainMenuState extends State<MainMenu> {
   Widget? _bodyWidget;
   List _appScreens = [
     Text('nothing'),
-    Text('saved items screen'),
+    SavedFeedScreen(),
     Text('nothing'),
     AddContentScreen(),
     SearchScreen(),

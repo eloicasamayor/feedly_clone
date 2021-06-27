@@ -7,8 +7,10 @@ import '../models/news_data.dart';
 
 class ArticleScreen extends StatelessWidget {
   final int id;
-  ArticleScreen(this.id);
+  final int _newsType;
+  ArticleScreen(this.id, this._newsType);
   static const String routeName = '/article-screen';
+  var _newsList;
 
   Future<void> _launchInBrowser(String url) async {
     if (await canLaunch(url)) {
@@ -25,11 +27,18 @@ class ArticleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String _title = NewsData().newsList[id]['title'].toString();
-    String _source = NewsData().newsList[id]['source'].toString();
-    String _articleBody = NewsData().newsList[id]['news_text'].toString();
-    String _imageUrl = NewsData().newsList[id]['image_url'].toString();
-    String _articleUrl = NewsData().newsList[id]['article_url'].toString();
+    if (_newsType == 1) {
+      _newsList = NewsData().newsList[id];
+    } else if (_newsType == 2) {
+      _newsList = NewsData().newsExploreList[id];
+    } else if (_newsType == 3) {
+      _newsList = NewsData().newsSavedList[id];
+    }
+    String _title = _newsList['title'].toString();
+    String _source = _newsList['source'].toString();
+    String _articleBody = _newsList['news_text'].toString();
+    String _imageUrl = _newsList['image_url'].toString();
+    String _articleUrl = _newsList['article_url'].toString();
 
     String swipeDirection = '';
     return Scaffold(
@@ -95,7 +104,7 @@ class ArticleScreen extends StatelessWidget {
               CustomRoute(
                 settings: RouteSettings(arguments: {'forward': true}),
                 builder: (_) {
-                  return ArticleScreen(id + 1);
+                  return ArticleScreen(id + 1, _newsType);
                 },
               ),
             );
@@ -109,7 +118,7 @@ class ArticleScreen extends StatelessWidget {
               CustomRoute(
                 settings: RouteSettings(arguments: {'forward': false}),
                 builder: (_) {
-                  return ArticleScreen(id - 1);
+                  return ArticleScreen(id - 1, _newsType);
                 },
               ),
             );

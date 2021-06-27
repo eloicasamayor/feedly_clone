@@ -6,13 +6,22 @@ import '../screens/article_screen.dart';
 import '../models/news_data.dart';
 
 class NewsItem extends StatelessWidget {
+  int _newsType;
   int id;
   Map<String, int> _modalValues;
-  NewsItem(this.id, this._modalValues);
+  NewsItem(this._newsType, this.id, this._modalValues);
 
   @override
   Widget build(BuildContext context) {
-    final _newsListItem = NewsData().newsList[id];
+    var _newsListItem;
+    if (_newsType == 1) {
+      _newsListItem = NewsData().newsList[id];
+    } else if (_newsType == 2) {
+      _newsListItem = NewsData().newsExploreList[id];
+    } else if (_newsType == 3) {
+      _newsListItem = NewsData().newsSavedList[id];
+    }
+
     final title = _newsListItem['title'].toString();
     final source = _newsListItem['source'].toString();
     final imageUrl = _newsListItem['image_url'].toString();
@@ -31,6 +40,7 @@ class NewsItem extends StatelessWidget {
     Duration timeSincePublication = DateTime.now().difference(date);
     int daysSincePublication = timeSincePublication.inDays;
     String newsPieceAge = '$daysSincePublication d';
+
     if (daysSincePublication == 0) {
       int hoursSincePublication = timeSincePublication.inHours;
       newsPieceAge = '$hoursSincePublication h';
@@ -50,7 +60,7 @@ class NewsItem extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (_) {
-              return ArticleScreen(id);
+              return ArticleScreen(id, _newsType);
             },
           ),
         );
