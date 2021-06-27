@@ -1,3 +1,4 @@
+import '../helpers/custom_route.dart';
 import 'package:feedly_clone/widgets/modal_theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -91,7 +92,8 @@ class ArticleScreen extends StatelessWidget {
             }
 
             Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
+              CustomRoute(
+                settings: RouteSettings(arguments: {'forward': true}),
                 builder: (_) {
                   return ArticleScreen(id + 1);
                 },
@@ -104,7 +106,8 @@ class ArticleScreen extends StatelessWidget {
               return;
             }
             Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
+              CustomRoute(
+                settings: RouteSettings(arguments: {'forward': false}),
                 builder: (_) {
                   return ArticleScreen(id - 1);
                 },
