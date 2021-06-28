@@ -65,8 +65,7 @@ class AddContentScreen extends StatelessWidget {
                       color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(5),
                       image: const DecorationImage(
-                        image: NetworkImage(
-                            'https://co-well.vn/wp-content/uploads/2018/06/service-ar-overview.png'),
+                        image: AssetImage('images/technology.png'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -87,8 +86,7 @@ class AddContentScreen extends StatelessWidget {
                       color: Colors.amber,
                       borderRadius: BorderRadius.circular(5),
                       image: const DecorationImage(
-                        image: NetworkImage(
-                            'https://www.betterteam.com/images/fashion-designer-interview-questions-4634x3580-2020129.jpeg?crop=21:16,smart&width=420&dpr=2'),
+                        image: AssetImage('images/design.jpeg'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -109,8 +107,7 @@ class AddContentScreen extends StatelessWidget {
                       color: Colors.greenAccent,
                       borderRadius: BorderRadius.circular(5),
                       image: const DecorationImage(
-                        image: NetworkImage(
-                            'https://www.finedininglovers.com/sites/g/files/xknfdk626/files/2021-06/Tea_1920_0.jpg'),
+                        image: AssetImage('images/marketing.jpg'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -131,8 +128,7 @@ class AddContentScreen extends StatelessWidget {
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(5),
                       image: const DecorationImage(
-                        image: NetworkImage(
-                            'https://images.adsttc.com/media/images/6081/a356/f91c/81f7/f500/006d/newsletter/Flooded_Modernity_1.jpg?1619108688'),
+                        image: AssetImage('images/economy.jpg'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -168,8 +164,7 @@ class AddContentScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   image: const DecorationImage(
-                    image: NetworkImage(
-                        'https://www.promotionalwears.com/image/cache/catalog/data/medals/new-img/phim16-multi-sports-medal-gold-600x534.jpg'),
+                    image: AssetImage('images/sports.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -185,8 +180,7 @@ class AddContentScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   image: const DecorationImage(
-                    image: NetworkImage(
-                        'http://i1.adis.ws/i/canon/eos-r6-rf24-105mm-f4_7.1_is_stm_front-on_square_6412568cc0e7484b96bd55e43069a56c'),
+                    image: AssetImage('images/photography.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -202,8 +196,7 @@ class AddContentScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   image: const DecorationImage(
-                    image: NetworkImage(
-                        'https://www.latercera.com/resizer/LdkAW1t-EkRqUK_UAU3zyIXKA2s=/380x570/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/426NOOQY7FDDNEICFKJNVGJSKU.jpg'),
+                    image: AssetImage('images/culture.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -219,8 +212,7 @@ class AddContentScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   image: const DecorationImage(
-                    image: NetworkImage(
-                        'https://www.foromarketing.com/wp-content/uploads/2018/03/La-moda-l%C3%ADquida.png'),
+                    image: AssetImage('images/fashion.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -236,8 +228,7 @@ class AddContentScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   image: const DecorationImage(
-                    image: NetworkImage(
-                        'https://www.euston96.com/wp-content/uploads/2018/11/Escultura-romana.jpg'),
+                    image: AssetImage('images/history.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
