@@ -49,10 +49,11 @@ class _MainMenuState extends State<MainMenu> {
     'Power Search',
   ];
 
-  void _onItemTapped(int index, BuildContext ctx) {
+  void _onItemTapped({required int index, BuildContext? ctx}) {
+    print('hola');
     print(_modalValues);
     if (index == 0) {
-      Scaffold.of(ctx).openDrawer();
+      Scaffold.of(ctx!).openDrawer();
     } else if (index == 2) {
       setState(() {
         _selectedPageIndex = index;
@@ -85,7 +86,7 @@ class _MainMenuState extends State<MainMenu> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        drawer: LateralMenu(),
+        drawer: LateralMenu(_onItemTapped),
         appBar: AppBar(
           elevation: 1,
           title: Text(
@@ -95,7 +96,7 @@ class _MainMenuState extends State<MainMenu> {
                 : TextStyle(color: Colors.black),
           ),
           automaticallyImplyLeading: false,
-          leading: _selectedPageIndex == 2
+          leading: _selectedPageIndex == 2 || _selectedPageIndex == 1
               ? IconButton(
                   onPressed: () => showModalBottomSheet<void>(
                       context: context,
@@ -156,7 +157,7 @@ class _MainMenuState extends State<MainMenu> {
                   (valor) {
                     if (valor != null) {
                       _modalValues = valor;
-                      _onItemTapped(_selectedPageIndex, context);
+                      _onItemTapped(index: _selectedPageIndex, ctx: context);
                     }
                   },
                 ),
@@ -182,7 +183,8 @@ class _MainMenuState extends State<MainMenu> {
         ),
         bottomNavigationBar: Builder(
           builder: (context) => BottomNavigationBar(
-            onTap: (tabIndex) => this._onItemTapped(tabIndex, context),
+            onTap: (tabIndex) =>
+                this._onItemTapped(index: tabIndex, ctx: context),
             //backgroundColor: Colors.white,
             unselectedItemColor: Theme.of(context).primaryColorLight,
             selectedItemColor: Theme.of(context).accentColor,
@@ -202,7 +204,7 @@ class _MainMenuState extends State<MainMenu> {
                 label: 'saved',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.feed_outlined),
+                icon: Icon(Icons.rss_feed_outlined),
                 label: 'feed',
               ),
               BottomNavigationBarItem(

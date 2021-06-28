@@ -42,23 +42,21 @@ class _MainFeedScreenState extends State<MainFeedScreen> {
         onRefresh: _pullRefresh,
       ),
       SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 15,
-            horizontal: 8,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15),
+              child: Text(
                 'Trending in Tech',
                 style: Theme.of(context).textTheme.headline3,
               ),
-              NewsItem(2, 0, this.widget._modalValues),
-              NewsItem(2, 1, this.widget._modalValues),
-              NewsItem(2, 2, this.widget._modalValues),
-            ],
-          ),
+            ),
+            NewsItem(2, 0, this.widget._modalValues),
+            NewsItem(2, 1, this.widget._modalValues),
+            NewsItem(2, 2, this.widget._modalValues),
+          ],
         ),
       ),
     ]);

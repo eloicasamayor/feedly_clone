@@ -67,7 +67,7 @@ final darkTheme = lightTheme.copyWith(
       fontSize: 15,
     ),
     subtitle2: TextStyle(
-      fontSize: 14,
+      fontSize: 15,
       height: 1.5,
       color: Colors.white54,
       fontWeight: FontWeight.w400,

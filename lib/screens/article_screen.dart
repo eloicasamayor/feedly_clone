@@ -1,8 +1,9 @@
-import '../helpers/custom_route.dart';
-import 'package:feedly_clone/widgets/modal_theme_config.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../helpers/custom_route.dart';
+import '../widgets/modal_theme_config.dart';
 import '../models/news_data.dart';
 
 class ArticleScreen extends StatelessWidget {
@@ -75,7 +76,8 @@ class ArticleScreen extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () => Share.share(
+                'check out my website https://github.com/eloicasamayor'),
             icon: Icon(
               Icons.share_outlined,
             ),

@@ -6,7 +6,7 @@ class AddContentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -151,11 +151,99 @@ class AddContentScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(
+                left: 10,
+                bottom: 20,
+              ),
               child: Text(
                 'Explore the web',
                 style: Theme.of(context).textTheme.headline3,
               ),
+            ),
+            ListTile(
+              visualDensity: VisualDensity.compact,
+              leading: Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: const DecorationImage(
+                    image: NetworkImage(
+                        'https://www.promotionalwears.com/image/cache/catalog/data/medals/new-img/phim16-multi-sports-medal-gold-600x534.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              title: Text('Sports'),
+              subtitle: Text('sources'),
+            ),
+            ListTile(
+              visualDensity: VisualDensity.compact,
+              leading: Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: const DecorationImage(
+                    image: NetworkImage(
+                        'http://i1.adis.ws/i/canon/eos-r6-rf24-105mm-f4_7.1_is_stm_front-on_square_6412568cc0e7484b96bd55e43069a56c'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              title: Text('Photography'),
+              subtitle: Text('sources'),
+            ),
+            ListTile(
+              visualDensity: VisualDensity.compact,
+              leading: Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: const DecorationImage(
+                    image: NetworkImage(
+                        'https://www.latercera.com/resizer/LdkAW1t-EkRqUK_UAU3zyIXKA2s=/380x570/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/426NOOQY7FDDNEICFKJNVGJSKU.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              title: Text('Culture'),
+              subtitle: Text('sources'),
+            ),
+            ListTile(
+              visualDensity: VisualDensity.compact,
+              leading: Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: const DecorationImage(
+                    image: NetworkImage(
+                        'https://www.foromarketing.com/wp-content/uploads/2018/03/La-moda-l%C3%ADquida.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              title: Text('Fashion'),
+              subtitle: Text('sources'),
+            ),
+            ListTile(
+              visualDensity: VisualDensity.compact,
+              leading: Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: const DecorationImage(
+                    image: NetworkImage(
+                        'https://www.euston96.com/wp-content/uploads/2018/11/Escultura-romana.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              title: Text('History'),
+              subtitle: Text('sources'),
             ),
           ],
         ),
