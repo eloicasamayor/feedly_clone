@@ -103,6 +103,9 @@ final ThemeData lightTheme = ThemeData(
       color: Colors.black38,
       fontSize: 15,
     ),
+    subtitle1: TextStyle(
+      color: Colors.black54,
+    ),
     subtitle2: TextStyle(
       fontSize: 15,
       height: 1.5,

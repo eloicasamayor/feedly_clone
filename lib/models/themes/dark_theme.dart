@@ -38,11 +38,13 @@ final darkTheme = lightTheme.copyWith(
   ),
   textTheme: TextTheme(
     headline1: TextStyle(
+      color: Colors.white,
       fontSize: 30,
       fontWeight: FontWeight.bold,
       height: 1.1,
     ),
     headline2: TextStyle(
+      color: Colors.white,
       fontSize: 19,
       fontWeight: FontWeight.w600,
       height: 1.1,
@@ -53,11 +55,13 @@ final darkTheme = lightTheme.copyWith(
       fontSize: 15,
     ),
     headline4: TextStyle(
+      color: Colors.white,
       fontSize: 17,
       fontWeight: FontWeight.w600,
       height: 1.1,
     ),
     bodyText1: TextStyle(
+      color: Colors.white,
       fontSize: 18,
       fontWeight: FontWeight.w400,
       height: 1.5,
@@ -65,6 +69,9 @@ final darkTheme = lightTheme.copyWith(
     bodyText2: TextStyle(
       color: Colors.white60,
       fontSize: 15,
+    ),
+    subtitle1: TextStyle(
+      color: Colors.white70,
     ),
     subtitle2: TextStyle(
       fontSize: 15,
